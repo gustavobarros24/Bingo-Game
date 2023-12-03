@@ -22,6 +22,10 @@ int main(){
     }
     int count = 0;
     while(flag != 1){
+        if(count == 99){
+            printf("Perdeu o jogo, excedeu o número de jogadas possíveis.\n");
+            break;
+        }
         int sairam[99];
         int min = 1;
         int max = 99;
@@ -42,20 +46,26 @@ int main(){
         }
         flag = bingo(bingocard, N, flag);
     }
-    printf("\n");
-    printf("======================================================================\n");
-    printf("                             ＢＩＮＧＯ\n");
-    printf("======================================================================\n");
-    printf("\n");
-    for(int i = 0; i<N; i++){
-        for(int j = 0; j<N; j++){
-            printf("%d      ", bingocard[i][j]);
-        }
-        printf("\n");
-    }
     if(flag == 1){
+        printf("\n");
+        printf("======================================================================\n");
+        printf("                             ＢＩＮＧＯ\n");
+        printf("======================================================================\n");
+        printf("\n");
+        for(int i = 0; i<N; i++){
+            for(int j = 0; j<N; j++){
+                printf("%d      ", bingocard[i][j]);
+            }
+            printf("\n");
+        }
         printf("Parabéns, completou o Bingo!\n");
         printf("Foram necessárias apenas %d jogadas\n", count);
+    }
+    if(flag == 0){
+        printf("\n");
+        printf("======================================================================\n");
+        printf("                                𝐏𝐄𝐑𝐃𝐄𝐔\n");
+        printf("======================================================================\n");
     }
     return 0;
 }
